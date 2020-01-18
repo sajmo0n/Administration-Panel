@@ -59,8 +59,8 @@ namespace AdministrationPanel_SerialPort
             if(serialPort1.IsOpen)
             {
                 DataOut = tBoxSendDataOut.Text;
-                //serialPort1.WriteLine(DataOut);
-                serialPort1.Write(DataOut);
+                serialPort1.WriteLine(DataOut);
+                //serialPort1.Write(DataOut);
             }
         }
     }
