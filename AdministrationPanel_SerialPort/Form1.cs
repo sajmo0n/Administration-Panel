@@ -14,6 +14,7 @@ namespace AdministrationPanel_SerialPort
     public partial class Form1 : Form
     {
         string DataOut;
+        string SendWith;
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +24,14 @@ namespace AdministrationPanel_SerialPort
         {
             string[] ports = SerialPort.GetPortNames();
             cBoxCOMPort.Items.AddRange(ports);
+
+            chBoxWrite.Checked = true;
+            chBoxWrite.Checked = false;
+            SendWith = "Write";
+
+            btnOpen.Enabled = true;
+            btnClose.Enabled = false;
+
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -37,10 +46,16 @@ namespace AdministrationPanel_SerialPort
 
                 serialPort1.Open();
                 progressBar1.Value = 100;
+                btnOpen.Enabled = false;
+                btnClose.Enabled = true;
+                lblStatusCom.Text = "ON";
             }
             catch(Exception err)
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnOpen.Enabled = true;
+                btnClose.Enabled = false;
+                lblStatusCom.Text = "OFF";
             }
         }
 
@@ -50,6 +65,9 @@ namespace AdministrationPanel_SerialPort
             {
                 serialPort1.Close();
                 progressBar1.Value = 0;
+                btnOpen.Enabled = true;
+                btnClose.Enabled = false;
+                lblStatusCom.Text = "OFF";
             }
             
         }
@@ -59,8 +77,42 @@ namespace AdministrationPanel_SerialPort
             if(serialPort1.IsOpen)
             {
                 DataOut = tBoxSendDataOut.Text;
-                serialPort1.WriteLine(DataOut);
-                //serialPort1.Write(DataOut);
+                if(SendWith == "WriteLine")
+                {
+                    serialPort1.WriteLine(DataOut);
+                }
+                else if(SendWith == "Write")
+                {
+                    serialPort1.Write(DataOut);
+                }
+            }
+        }
+
+        private void btnClearDataOut_Click(object sender, EventArgs e)
+        {
+            if(tBoxSendDataOut.Text != "")
+            {
+                tBoxSendDataOut.Text = "";
+            }
+        }
+
+        private void chBoxWriteLine_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chBoxWriteLine.Checked)
+            {
+                SendWith = "WriteLine";
+                chBoxWrite.Checked = false;
+                chBoxWriteLine.Checked = true;
+            }
+        }
+
+        private void chBoxWrite_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chBoxWrite.Checked)
+            {
+                SendWith = "Write";
+                chBoxWrite.Checked = true;
+                chBoxWriteLine.Checked = false;
             }
         }
     }
