@@ -14,6 +14,7 @@ namespace AdministrationPanel_SerialPort
     public partial class Form1 : Form
     {
         string DataOut;
+        string DataIn;
         string SendWith;
         public Form1()
         {
@@ -31,6 +32,9 @@ namespace AdministrationPanel_SerialPort
 
             btnOpen.Enabled = true;
             btnClose.Enabled = false;
+
+            chBoxAlwaysUpdate.Checked = false;
+            chBoxAddToOldData.Checked = true;
 
         }
 
@@ -113,6 +117,60 @@ namespace AdministrationPanel_SerialPort
                 SendWith = "Write";
                 chBoxWrite.Checked = true;
                 chBoxWriteLine.Checked = false;
+            }
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            DataIn = serialPort1.ReadExisting();
+            this.Invoke(new EventHandler(ShowData));
+        }
+
+        private void ShowData(object sender, EventArgs e)
+        {
+            if(chBoxAlwaysUpdate.Checked)
+            {
+                tBoxDataIn.Text = DataIn;
+            }
+            else if(chBoxAddToOldData.Checked)
+            {
+                tBoxDataIn.Text += DataIn;
+            }
+
+            
+        }
+
+        private void chBoxAlwaysUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chBoxAlwaysUpdate.Checked)
+            {
+                chBoxAlwaysUpdate.Checked = true;
+                chBoxAddToOldData.Checked = false;
+            }
+            else
+            {
+                chBoxAddToOldData.Checked = true;
+            }
+        }
+
+        private void chBoxAddToOldData_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chBoxAddToOldData.Checked)
+            {
+                chBoxAlwaysUpdate.Checked = false;
+                chBoxAddToOldData.Checked = true;
+            }
+            else
+            {
+                chBoxAlwaysUpdate.Checked = true;
+            }
+        }
+
+        private void btnClearDataIn_Click(object sender, EventArgs e)
+        {
+            if (tBoxDataIn.Text != "")
+            {
+                tBoxDataIn.Text = "";
             }
         }
     }

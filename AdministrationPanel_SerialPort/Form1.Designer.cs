@@ -55,10 +55,16 @@
             this.btnClearDataOut = new System.Windows.Forms.Button();
             this.chBoxWriteLine = new System.Windows.Forms.CheckBox();
             this.chBoxWrite = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chBoxAlwaysUpdate = new System.Windows.Forms.CheckBox();
+            this.chBoxAddToOldData = new System.Windows.Forms.CheckBox();
+            this.btnClearDataIn = new System.Windows.Forms.Button();
+            this.tBoxDataIn = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -262,6 +268,10 @@
             this.btnSendData.UseVisualStyleBackColor = true;
             this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.chBoxWrite);
@@ -328,11 +338,65 @@
             this.chBoxWrite.UseVisualStyleBackColor = true;
             this.chBoxWrite.CheckedChanged += new System.EventHandler(this.chBoxWrite_CheckedChanged);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chBoxAlwaysUpdate);
+            this.groupBox5.Controls.Add(this.chBoxAddToOldData);
+            this.groupBox5.Controls.Add(this.btnClearDataIn);
+            this.groupBox5.Controls.Add(this.tBoxDataIn);
+            this.groupBox5.Location = new System.Drawing.Point(273, 252);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(248, 195);
+            this.groupBox5.TabIndex = 5;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Receiver Control";
+            // 
+            // chBoxAlwaysUpdate
+            // 
+            this.chBoxAlwaysUpdate.AutoSize = true;
+            this.chBoxAlwaysUpdate.Location = new System.Drawing.Point(125, 130);
+            this.chBoxAlwaysUpdate.Name = "chBoxAlwaysUpdate";
+            this.chBoxAlwaysUpdate.Size = new System.Drawing.Size(97, 17);
+            this.chBoxAlwaysUpdate.TabIndex = 8;
+            this.chBoxAlwaysUpdate.Text = "Always Update";
+            this.chBoxAlwaysUpdate.UseVisualStyleBackColor = true;
+            this.chBoxAlwaysUpdate.CheckedChanged += new System.EventHandler(this.chBoxAlwaysUpdate_CheckedChanged);
+            // 
+            // chBoxAddToOldData
+            // 
+            this.chBoxAddToOldData.AutoSize = true;
+            this.chBoxAddToOldData.Location = new System.Drawing.Point(125, 153);
+            this.chBoxAddToOldData.Name = "chBoxAddToOldData";
+            this.chBoxAddToOldData.Size = new System.Drawing.Size(106, 17);
+            this.chBoxAddToOldData.TabIndex = 7;
+            this.chBoxAddToOldData.Text = "Add To Old Data";
+            this.chBoxAddToOldData.UseVisualStyleBackColor = true;
+            this.chBoxAddToOldData.CheckedChanged += new System.EventHandler(this.chBoxAddToOldData_CheckedChanged);
+            // 
+            // btnClearDataIn
+            // 
+            this.btnClearDataIn.Location = new System.Drawing.Point(26, 130);
+            this.btnClearDataIn.Name = "btnClearDataIn";
+            this.btnClearDataIn.Size = new System.Drawing.Size(93, 40);
+            this.btnClearDataIn.TabIndex = 4;
+            this.btnClearDataIn.Text = "Clear Data In";
+            this.btnClearDataIn.UseVisualStyleBackColor = true;
+            this.btnClearDataIn.Click += new System.EventHandler(this.btnClearDataIn_Click);
+            // 
+            // tBoxDataIn
+            // 
+            this.tBoxDataIn.Location = new System.Drawing.Point(26, 19);
+            this.tBoxDataIn.Multiline = true;
+            this.tBoxDataIn.Name = "tBoxDataIn";
+            this.tBoxDataIn.Size = new System.Drawing.Size(199, 92);
+            this.tBoxDataIn.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -346,6 +410,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -378,6 +444,11 @@
         private System.Windows.Forms.Label lblStatusCom;
         private System.Windows.Forms.CheckBox chBoxWrite;
         private System.Windows.Forms.CheckBox chBoxWriteLine;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox chBoxAlwaysUpdate;
+        private System.Windows.Forms.CheckBox chBoxAddToOldData;
+        private System.Windows.Forms.Button btnClearDataIn;
+        private System.Windows.Forms.TextBox tBoxDataIn;
     }
 }
 
