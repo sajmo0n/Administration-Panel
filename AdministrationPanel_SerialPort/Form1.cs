@@ -173,5 +173,20 @@ namespace AdministrationPanel_SerialPort
                 tBoxDataIn.Text = "";
             }
         }
+
+        private void btnReadIDCards_Click(object sender, EventArgs e)
+        {
+            lstBoxIDCards.Items.Add("ID Card 1");
+            lstBoxIDCards.Items.Add("ID Card 2");
+            lstBoxIDCards.Items.Add("ID Card 3");
+            lstBoxIDCards.Items.Add("ID Card 4");
+            lstBoxIDCards.Items.Add("ID Card 5");
+            lstBoxIDCards.Items.Add("ID Card 6");
+        }
+
+        private void btnClearIDCardsList_Click(object sender, EventArgs e)
+        {
+            lstBoxIDCards.Items.Clear();
+        }
     }
 }

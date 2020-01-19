@@ -50,21 +50,28 @@
             this.btnSendData = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstBoxIDCards = new System.Windows.Forms.ListBox();
+            this.chBoxWrite = new System.Windows.Forms.CheckBox();
+            this.chBoxWriteLine = new System.Windows.Forms.CheckBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnClearDataOut = new System.Windows.Forms.Button();
-            this.chBoxWriteLine = new System.Windows.Forms.CheckBox();
-            this.chBoxWrite = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chBoxAlwaysUpdate = new System.Windows.Forms.CheckBox();
             this.chBoxAddToOldData = new System.Windows.Forms.CheckBox();
             this.btnClearDataIn = new System.Windows.Forms.Button();
             this.tBoxDataIn = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnReadIDCards = new System.Windows.Forms.Button();
+            this.btnClearIDCardsList = new System.Windows.Forms.Button();
+            this.btnUnlockIDCard = new System.Windows.Forms.Button();
+            this.btnDeleteIDCard = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -199,14 +206,14 @@
             this.groupBox2.Controls.Add(this.btnOpen);
             this.groupBox2.Location = new System.Drawing.Point(12, 208);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(235, 213);
+            this.groupBox2.Size = new System.Drawing.Size(235, 239);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblStatusCom);
-            this.groupBox4.Location = new System.Drawing.Point(103, 19);
+            this.groupBox4.Location = new System.Drawing.Point(103, 44);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(116, 133);
             this.groupBox4.TabIndex = 3;
@@ -225,14 +232,14 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(18, 173);
+            this.progressBar1.Location = new System.Drawing.Point(18, 197);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(201, 23);
             this.progressBar1.TabIndex = 2;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(18, 95);
+            this.btnClose.Location = new System.Drawing.Point(18, 120);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 57);
             this.btnClose.TabIndex = 1;
@@ -242,7 +249,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(18, 19);
+            this.btnOpen.Location = new System.Drawing.Point(18, 42);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 60);
             this.btnOpen.TabIndex = 0;
@@ -288,6 +295,36 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Input Control";
             // 
+            // lstBoxIDCards
+            // 
+            this.lstBoxIDCards.FormattingEnabled = true;
+            this.lstBoxIDCards.Location = new System.Drawing.Point(17, 24);
+            this.lstBoxIDCards.Name = "lstBoxIDCards";
+            this.lstBoxIDCards.Size = new System.Drawing.Size(199, 264);
+            this.lstBoxIDCards.TabIndex = 7;
+            // 
+            // chBoxWrite
+            // 
+            this.chBoxWrite.AutoSize = true;
+            this.chBoxWrite.Location = new System.Drawing.Point(151, 117);
+            this.chBoxWrite.Name = "chBoxWrite";
+            this.chBoxWrite.Size = new System.Drawing.Size(51, 17);
+            this.chBoxWrite.TabIndex = 8;
+            this.chBoxWrite.Text = "Write";
+            this.chBoxWrite.UseVisualStyleBackColor = true;
+            this.chBoxWrite.CheckedChanged += new System.EventHandler(this.chBoxWrite_CheckedChanged);
+            // 
+            // chBoxWriteLine
+            // 
+            this.chBoxWriteLine.AutoSize = true;
+            this.chBoxWriteLine.Location = new System.Drawing.Point(37, 117);
+            this.chBoxWriteLine.Name = "chBoxWriteLine";
+            this.chBoxWriteLine.Size = new System.Drawing.Size(71, 17);
+            this.chBoxWriteLine.TabIndex = 7;
+            this.chBoxWriteLine.Text = "WriteLine";
+            this.chBoxWriteLine.UseVisualStyleBackColor = true;
+            this.chBoxWriteLine.CheckedChanged += new System.EventHandler(this.chBoxWriteLine_CheckedChanged);
+            // 
             // btnAddUser
             // 
             this.btnAddUser.Location = new System.Drawing.Point(134, 182);
@@ -315,28 +352,6 @@
             this.btnClearDataOut.Text = "Clear Data Out";
             this.btnClearDataOut.UseVisualStyleBackColor = true;
             this.btnClearDataOut.Click += new System.EventHandler(this.btnClearDataOut_Click);
-            // 
-            // chBoxWriteLine
-            // 
-            this.chBoxWriteLine.AutoSize = true;
-            this.chBoxWriteLine.Location = new System.Drawing.Point(37, 117);
-            this.chBoxWriteLine.Name = "chBoxWriteLine";
-            this.chBoxWriteLine.Size = new System.Drawing.Size(71, 17);
-            this.chBoxWriteLine.TabIndex = 7;
-            this.chBoxWriteLine.Text = "WriteLine";
-            this.chBoxWriteLine.UseVisualStyleBackColor = true;
-            this.chBoxWriteLine.CheckedChanged += new System.EventHandler(this.chBoxWriteLine_CheckedChanged);
-            // 
-            // chBoxWrite
-            // 
-            this.chBoxWrite.AutoSize = true;
-            this.chBoxWrite.Location = new System.Drawing.Point(151, 117);
-            this.chBoxWrite.Name = "chBoxWrite";
-            this.chBoxWrite.Size = new System.Drawing.Size(51, 17);
-            this.chBoxWrite.TabIndex = 8;
-            this.chBoxWrite.Text = "Write";
-            this.chBoxWrite.UseVisualStyleBackColor = true;
-            this.chBoxWrite.CheckedChanged += new System.EventHandler(this.chBoxWrite_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -391,11 +406,64 @@
             this.tBoxDataIn.Size = new System.Drawing.Size(199, 92);
             this.tBoxDataIn.TabIndex = 2;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnDeleteIDCard);
+            this.groupBox6.Controls.Add(this.btnUnlockIDCard);
+            this.groupBox6.Controls.Add(this.btnClearIDCardsList);
+            this.groupBox6.Controls.Add(this.btnReadIDCards);
+            this.groupBox6.Controls.Add(this.lstBoxIDCards);
+            this.groupBox6.Location = new System.Drawing.Point(555, 12);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(233, 435);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "ID Cards Control Panel";
+            // 
+            // btnReadIDCards
+            // 
+            this.btnReadIDCards.Location = new System.Drawing.Point(17, 303);
+            this.btnReadIDCards.Name = "btnReadIDCards";
+            this.btnReadIDCards.Size = new System.Drawing.Size(77, 48);
+            this.btnReadIDCards.TabIndex = 8;
+            this.btnReadIDCards.Text = "Read ID Cards";
+            this.btnReadIDCards.UseVisualStyleBackColor = true;
+            this.btnReadIDCards.Click += new System.EventHandler(this.btnReadIDCards_Click);
+            // 
+            // btnClearIDCardsList
+            // 
+            this.btnClearIDCardsList.Location = new System.Drawing.Point(138, 303);
+            this.btnClearIDCardsList.Name = "btnClearIDCardsList";
+            this.btnClearIDCardsList.Size = new System.Drawing.Size(78, 48);
+            this.btnClearIDCardsList.TabIndex = 9;
+            this.btnClearIDCardsList.Text = "Clear ID Cards list";
+            this.btnClearIDCardsList.UseVisualStyleBackColor = true;
+            this.btnClearIDCardsList.Click += new System.EventHandler(this.btnClearIDCardsList_Click);
+            // 
+            // btnUnlockIDCard
+            // 
+            this.btnUnlockIDCard.Location = new System.Drawing.Point(17, 370);
+            this.btnUnlockIDCard.Name = "btnUnlockIDCard";
+            this.btnUnlockIDCard.Size = new System.Drawing.Size(77, 46);
+            this.btnUnlockIDCard.TabIndex = 10;
+            this.btnUnlockIDCard.Text = "Unlock ID Card";
+            this.btnUnlockIDCard.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteIDCard
+            // 
+            this.btnDeleteIDCard.Location = new System.Drawing.Point(138, 370);
+            this.btnDeleteIDCard.Name = "btnDeleteIDCard";
+            this.btnDeleteIDCard.Size = new System.Drawing.Size(78, 46);
+            this.btnDeleteIDCard.TabIndex = 11;
+            this.btnDeleteIDCard.Text = "Delete ID Card";
+            this.btnDeleteIDCard.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -412,6 +480,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -449,6 +518,12 @@
         private System.Windows.Forms.CheckBox chBoxAddToOldData;
         private System.Windows.Forms.Button btnClearDataIn;
         private System.Windows.Forms.TextBox tBoxDataIn;
+        private System.Windows.Forms.ListBox lstBoxIDCards;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnDeleteIDCard;
+        private System.Windows.Forms.Button btnUnlockIDCard;
+        private System.Windows.Forms.Button btnClearIDCardsList;
+        private System.Windows.Forms.Button btnReadIDCards;
     }
 }
 
